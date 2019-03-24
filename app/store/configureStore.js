@@ -6,10 +6,11 @@ import rootReducer from '../reducers'
 
 export default function configureStore(initialState) {
   const logger = createLogger();
+  const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, promise, logger)
+    composeEnhancers(applyMiddleware(thunk, promise, logger))
   );
    
   if (module.hot) {
