@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchDirectory } from '../../actions/directory';
+import withStyles from 'isomorphic-style-loader/withStyles';
 
 import ReactTable from 'react-table';
-import "react-table/react-table.css";
+import * as reactTableCSS from "react-table/react-table.css";
 
 class Directory extends React.Component{
   constructor(props) {
@@ -75,4 +76,4 @@ const mapStateToProps = state => ({
   data: state.directory.data
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Directory);
+export default withStyles(reactTableCSS)(connect(mapStateToProps, mapDispatchToProps)(Directory));

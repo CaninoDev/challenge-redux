@@ -46,19 +46,33 @@ var config = {
             }]
           ]
         }
+      },
+      {
+        test: /\.css$/,
+        loader: "css-loader",
+        use: [
+           'isomorphic-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+           'postcss-loader'
+        ]
       }
-    ]
+      ]
   }
 };
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false
-      }
-    })
+     new webpack.optimize.UglifyJsPlugin({
+       compressor: {
+         screw_ie8: true,
+         warnings: false
+       }
+     })
   );
 }
 
