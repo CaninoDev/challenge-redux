@@ -23,6 +23,7 @@
     "body-parser": "^1.15.1",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.1",
+    "cross-fetch": "latest",
     "css-loader": "^0.28.11",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
@@ -39,6 +40,7 @@
     "react-dom": "15.1.0",
     "react-redux": "4.4.1",
     "react-router": "^2.4.0",
+    "react-table": "^6.9.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.4",
@@ -52,8 +54,7 @@
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
-    "whatwg-fetch": "^0.11.0",
-    "cross-fetch": "latest"
+    "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
     "babel-plugin-rewire": "1.0.0-rc-3",

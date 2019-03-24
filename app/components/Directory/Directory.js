@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchDirectory } from '../../actions/directory';
 
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
+
 class Directory extends React.Component{
   constructor(props) {
     super(props);
@@ -24,7 +27,39 @@ class Directory extends React.Component{
 
     return (
        <div className="container">
-        {directory !== undefined && directory.map(student => <div key={student._id} />)}
+        {directory !== undefined && directory.map(student => <ReactTable
+           data={student}
+           columns={[
+              {
+                Header: "Name",
+                columns: [
+                   {
+                     Header: "First Name",
+                     accessor: "firstname"
+                   },
+                  {
+                    Header: "Last Name",
+                    accessor: "lastname"
+                  }]
+              },
+             {
+               Header: "Info",
+               columns: [
+                  {
+                    Header: "eMail",
+                    accessor: "email"
+                  },
+                 {
+                   Header: "Age",
+                   accessor: "age"
+                 },
+                 {
+                   Header: "Grade",
+                   accessor: "grade"
+                 }]
+             }]
+           }
+           defaultPageSize={10} />)}
        </div>
     )
   }
