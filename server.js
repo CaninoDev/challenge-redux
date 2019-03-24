@@ -32,6 +32,8 @@ var User = require('./models/User');
 // Controllers
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
+var studentController = require('./controllers/student');
+
 
 // React and Server-Side Rendering
 var routes = require('./app/routes');
@@ -111,6 +113,7 @@ app.post('/login', userController.loginPost);
 app.post('/forgot', userController.forgotPost);
 app.post('/reset/:token', userController.resetPost);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
+app.get('/directory', studentController.directoryGet);
 
 // React server rendering
 app.use(function(req, res) {
