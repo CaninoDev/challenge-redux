@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchDirectory } from '../../actions/directory';
 import Student from './Student';
-import StudentForm from './Form'
 
 class Directory extends React.Component{
   constructor(props) {
