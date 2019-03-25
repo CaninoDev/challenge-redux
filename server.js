@@ -114,7 +114,7 @@ app.post('/forgot', userController.forgotPost);
 app.post('/reset/:token', userController.resetPost);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
 app.get('/directory', studentController.directoryGet);
-
+app.post('/directory', studentController.studentPost);
 // React server rendering
 app.use(function(req, res) {
   var initialState = {
