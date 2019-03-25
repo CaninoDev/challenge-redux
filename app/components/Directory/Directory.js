@@ -1,27 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchDirectory } from '../../actions/directory';
-
-
-const TableRow = props => {
-  const { data } = props;
-  const { firstname, lastname, email, age, grade } = data;
-  return (
-    <tr>
-      <td>{firstname}</td>
-      <td>{lastname}</td>
-      <td>{email}</td>
-      <td>{age}</td>
-      <td>{grade}</td>
-      <td>
-         <button type="button" className="btn btn-warning btn-xs">E</button>
-       </td>
-       <td>
-         <button type="button" className="btn btn-danger btn-xs">D</button>
-       </td>
-     </tr>
-  )
-};
+import Student from './Student';
+import StudentForm from './Form'
 
 class Directory extends React.Component{
   constructor(props) {
@@ -63,7 +44,7 @@ class Directory extends React.Component{
                    </tr>
                    </thead>
                    <tbody>
-                   {directory ? directory.map(student => <TableRow key={student._id} data={student}/>) : ""}
+                   {directory && directory.map(student => <Student key={student._id} data={student} />)}
                    <tr>
                      <td>
                        <div className="form-group">
