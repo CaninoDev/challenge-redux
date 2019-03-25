@@ -14,14 +14,12 @@ const TableRow = props => {
       <td>{age}</td>
       <td>{grade}</td>
       <td>
-        <button type="button" className="btn btn-xs">
-          <span className="glyphicon glyphicon-pencil"></span>
-        </button>
-        <button type="button" className="btn btn-xs">
-          <span className="glyphicon glyphicon-trash"></span>
-        </button>
-      </td>
-    </tr>
+         <button type="button" className="btn btn-warning btn-xs">E</button>
+       </td>
+       <td>
+         <button type="button" className="btn btn-danger btn-xs">D</button>
+       </td>
+     </tr>
   )
 };
 
@@ -41,40 +39,72 @@ class Directory extends React.Component{
       directory: nextProps.data
     })
   }
-  render() {
-    const { directory } = this.state;
 
-    const fleshOutRow = (obj) => {
-      let webFragment = [];
-      obj.map(function(obj) { return [...Object.values(obj) ] } ).forEach(function(row) {webFragment.push(<td>{row}</td>)});
-      return [...webFragment];
-    }
+  render() {
+    const {directory} = this.state;
 
     return (
-       <div className="container">
+       <div className="container-fluid">
          <div className="panel">
            <div className="panel-heading">
              <h3 className="panel-title">Student Directory</h3>
            </div>
            <div className="panel-body">
              <div className="table-responsive">
-             <table className="table table-hover table-condensed">
-               <thead>
-               <tr>
-                 <th>First Name</th>
-                 <th>Last Name</th>
-                 <th>eMail</th>
-                 <th>Age</th>
-                 <th>Grade</th>
-               </tr>
-               </thead>
-               <tbody>
-               {directory ? directory.map(student => <TableRow key={student._id} data={student}/>) : ""}
-               </tbody>
-               </table>
+               <form className="form-inline">
+                 <table className="table table-hover table-condensed">
+                   <thead>
+                   <tr>
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>eMail</th>
+                     <th>Age</th>
+                     <th>Grade</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   {directory ? directory.map(student => <TableRow key={student._id} data={student}/>) : ""}
+                   <tr>
+                     <td>
+                       <div className="form-group">
+                         <label className="sr-only" htmlFor="firstname">First Name</label>
+                         <input type="text" className="form-control" id="firstname" placeholder="First Name"/>
+                       </div>
+                     </td>
+                     <td>
+                       <div className="form-group">
+                         <label className="sr-only" htmlFor="lastname">Last Name</label>
+                         <input type="text" className="form-control" id="lastname" placeholder="Surname"/>
+                       </div>
+                     </td>
+                     <td>
+                       <div className="form-group">
+                         <label className="sr-only" htmlFor="email">test@test.com</label>
+                         <input type="text" className="form-control" id="email" placeholder="eMail Address"/>
+                       </div>
+                     </td>
+                     <td>
+                       <div className="form-group">
+                         <label className="sr-only" htmlFor="age">Age</label>
+                         <input type="text" className="form-control" id="age" placeholder="Age"/>
+                       </div>
+                     </td>
+                     <td>
+                       <div className="form-group">
+                         <label className="sr-only" htmlFor="grade">Grade</label>
+                         <input type="text" className="form-control" id="grade" placeholder="Grade"/>
+                       </div>
+                     </td>
+                     <td colSpan="2">
+                       <button type="submit" className="btn btn-info btn-xs">N</button>
+                     </td>
+                   </tr>
+                   </tbody>
+                 </table>
+               </form>
              </div>
            </div>
-           </div>
+         </div>
        </div>
     )
   }
