@@ -1,27 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchDirectory } from '../../actions/directory';
+import {connect} from 'react-redux';
+import {fetchDirectory, postStudent} from '../../actions/directory';
 import Student from './Student';
+import StudentForm from './Form';
 
-class Directory extends React.Component{
+class Directory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      directory: this.props.data
+      directory: this.props.data,
     };
   }
-  componentDidMount () {
-    this.props.fetchDirectory();
-  }
 
-  componentWillReceiveProps(nextProps, nextContext) {
-    this.setState({
-      directory: nextProps.data
-    })
+  componentDidMount () {
+    this.fetchDirectory();
   }
 
   render() {
-    const {directory} = this.state;
+    const { directory } = this.state;
 
     return (
        <div className="container-fluid">
@@ -31,57 +27,21 @@ class Directory extends React.Component{
            </div>
            <div className="panel-body">
              <div className="table-responsive">
-               <form className="form-inline">
-                 <table className="table table-hover table-condensed">
-                   <thead>
-                   <tr>
-                     <th>First Name</th>
-                     <th>Last Name</th>
-                     <th>eMail</th>
-                     <th>Age</th>
-                     <th>Grade</th>
-                   </tr>
-                   </thead>
-                   <tbody>
-                   {directory && directory.map(student => <Student key={student._id} data={student} />)}
-                   <tr>
-                     <td>
-                       <div className="form-group">
-                         <label className="sr-only" htmlFor="firstname">First Name</label>
-                         <input type="text" className="form-control" id="firstname" placeholder="First Name"/>
-                       </div>
-                     </td>
-                     <td>
-                       <div className="form-group">
-                         <label className="sr-only" htmlFor="lastname">Last Name</label>
-                         <input type="text" className="form-control" id="lastname" placeholder="Surname"/>
-                       </div>
-                     </td>
-                     <td>
-                       <div className="form-group">
-                         <label className="sr-only" htmlFor="email">test@test.com</label>
-                         <input type="text" className="form-control" id="email" placeholder="eMail Address"/>
-                       </div>
-                     </td>
-                     <td>
-                       <div className="form-group">
-                         <label className="sr-only" htmlFor="age">Age</label>
-                         <input type="text" className="form-control" id="age" placeholder="Age"/>
-                       </div>
-                     </td>
-                     <td>
-                       <div className="form-group">
-                         <label className="sr-only" htmlFor="grade">Grade</label>
-                         <input type="text" className="form-control" id="grade" placeholder="Grade"/>
-                       </div>
-                     </td>
-                     <td colSpan="2">
-                       <button type="submit" className="btn btn-info btn-xs">N</button>
-                     </td>
-                   </tr>
-                   </tbody>
-                 </table>
-               </form>
+               <table className="table table-hover table-condensed">
+                 <thead>
+                 <tr>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>eMail</th>
+                   <th>Age</th>
+                   <th>Grade</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 {directory && directory.map(student => <Student key={student._id} data={student}/>)}
+                 </tbody>
+               </table>
+               <StudentForm />
              </div>
            </div>
          </div>
@@ -92,7 +52,7 @@ class Directory extends React.Component{
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchDirectory: () => dispatch(fetchDirectory())
+    fetchDirectory: () => dispatch(fetchDirectory()),
   };
 };
 
