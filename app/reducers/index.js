@@ -6,5 +6,5 @@ import directory from './directory';
 export default combineReducers({
   messages,
   auth,
-  directory
+  directory,
 });
