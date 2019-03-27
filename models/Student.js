@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 
-const schemaOptions = {
-  timestamps: true
-};
-
 const studentSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -25,7 +21,7 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, schemaOptions);
+});
 
 const Student = mongoose.model('Student', studentSchema);
 
